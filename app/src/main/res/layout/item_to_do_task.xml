@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/ll_item_to_do"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginTop="@dimen/m8"
+        android:layout_marginLeft="@dimen/m8"
+        android:layout_marginRight="@dimen/m8"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_to_do_img"
+            android:layout_width="@dimen/m48"
+            android:layout_height="@dimen/m48"
+            android:layout_marginLeft="@dimen/m7"
+            android:layout_marginTop="@dimen/m7"
+            />
+
+        <TextView
+            android:id="@+id/tv_to_do_title"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="9dp"
+            android:layout_toRightOf="@id/iv_to_do_img"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#3e3e3e"
+            android:textSize="@dimen/t16"/>
+
+        <TextView
+            android:id="@+id/tv_line_1"
+            android:layout_width="1dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="9dp"
+            android:layout_toRightOf="@id/tv_to_do_title"
+            android:background="#9a9a9a"
+            />
+
+        <TextView
+            android:id="@+id/tv_to_do_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="9dp"
+            android:textColor="@color/air_force_blues"
+            android:layout_toRightOf="@id/tv_line_1"
+            android:textSize="@dimen/t14"/>
+
+        <TextView
+            android:id="@+id/tv_line_2"
+            android:layout_width="1dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="9dp"
+            android:layout_toRightOf="@id/tv_to_do_type"
+            android:background="#9a9a9a"
+            />
+
+        <TextView
+            android:id="@+id/tv_to_do_create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="9dp"
+            android:layout_toRightOf="@id/tv_line_2"
+            android:textColor="#818181"
+            android:textSize="@dimen/t13"/>
+
+        <TextView
+            android:id="@+id/tv_to_do_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_to_do_title"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="14dp"
+            android:layout_toRightOf="@id/iv_to_do_img"
+            android:textColor="#3e3e3e"
+            android:textSize="@dimen/t16"/>
+
+        <TextView
+            android:id="@+id/tv_to_do_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tv_to_do_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="9dp"
+            android:textColor="#818181"
+            android:textSize="@dimen/t13"/>
+
+    </RelativeLayout>
+</LinearLayout>

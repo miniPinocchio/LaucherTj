@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/anti_flash_white"
+              android:orientation="vertical"
+              tools:context=".ui.fragment.MainFragment">
+
+    <include layout="@layout/layout_title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/m8"
+        android:layout_marginLeft="@dimen/m8"
+        android:layout_marginRight="@dimen/m8"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:background="@color/white"
+            >
+
+            <TextView
+                android:id="@+id/tv_system_tool"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="基本工具"
+                android:textColor="@color/main_tab_text_color"
+                android:textSize="@dimen/t14"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/main_tab_line_color"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_main_tab_visitor_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/m5"
+            android:background="@color/white"
+            android:scrollbars="none">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+</LinearLayout>

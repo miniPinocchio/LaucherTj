@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/whisper"
+              android:orientation="vertical"
+    >
+
+    <include layout="@layout/layout_title"/>
+
+
+    <TextView
+        android:id="@+id/tv_main_search"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/shape_bg_main_search"
+        android:drawableLeft="@drawable/img_main_search"
+        android:drawablePadding="@dimen/m6"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/m10"
+        android:text="限搜索创建人、标题、内容"
+        android:textColor="#C5C8C8"
+        android:textSize="@dimen/t12"
+        android:visibility="gone"/>
+
+    <com.anrongtec.laucher.webview.SwipeRefreshWebView
+        android:id="@+id/web_team"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </com.anrongtec.laucher.webview.SwipeRefreshWebView>
+
+    <!--<cn.bingoogolapple.refreshlayout.BGARefreshLayout-->
+    <!--android:id="@+id/rl_refresh"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/rv_to_list"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"/>-->
+    <!--</cn.bingoogolapple.refreshlayout.BGARefreshLayout>-->
+
+    <Button
+        android:id="@+id/btn_to_do_deal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="处置"
+        android:visibility="gone"/>
+</LinearLayout>

@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.anrongtec.laucher"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 14
+        versionName "6.1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'anrong'
+            keyPassword 'anrongkeji'
+            storeFile file('北京安荣key')
+            storePassword 'anrongkeji'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    allprojects {
+        repositories {
+            jcenter() // 或者 mavenCentral()
+        }
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:support-v4:26.+'
+    compile 'com.android.support:design:26.+'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'com.githang:status-bar-compat:0.5.3'
+    compile 'com.orhanobut:logger:2.1.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile(name: 'FeedBackSdk-V1.0.0', ext: 'aar')
+    compile files('libs/lite-orm-1.7.0.jar')
+    testCompile 'junit:junit:4.12'
+    compile files('libs/ddpush-1.0.04.jar')
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'
+    compile 'com.github.donkingliang:GroupedRecyclerViewAdapter:1.2.0'
+    //    compile files('libs/okhttputils-1.7.2.jar')
+    compile files('libs/user_jar.jar')
+    compile files('libs/AMap_Location_V3.6.1_20171012.jar')
+    compile(name: 'reckon-1.0.8', ext: 'aar')
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
+    compile 'com.didikee:permissionsHelper:0.1.8'
+    compile 'com.ms-square:expandableTextView:0.1.4'
+    compile files('libs/okhttputils-2_4_1.jar')
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    //    compile files('libs/zsdk_7max.jar')
+    compile files('libs/zsdk.jar')
+}

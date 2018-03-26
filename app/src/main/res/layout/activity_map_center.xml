@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/layout_title"/>
+
+    <TextView
+        android:id="@+id/tv_map_main_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_main_search"
+        android:drawableLeft="@drawable/img_main_search"
+        android:drawablePadding="@dimen/m6"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/m10"
+        android:text="限搜索标题、任务"
+        android:textColor="#C5C8C8"
+        android:textSize="@dimen/t12"
+        android:visibility="gone"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/nav_on"/>
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/map_center_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.amap.api.maps.MapView>
+
+
+</LinearLayout>

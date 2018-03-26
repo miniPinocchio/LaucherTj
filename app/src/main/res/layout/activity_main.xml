@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.MainActivity">
+
+    <include layout="@layout/layout_title"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </android.support.v4.view.ViewPager>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/main_tab_line_color"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/m3">
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/m3"
+            android:drawableTop="@drawable/img_bottom_phone"
+            android:gravity="center"
+            android:text="电话"
+            />
+
+        <TextView
+            android:id="@+id/tv_sms"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/m3"
+            android:drawableTop="@drawable/img_bottom_messages"
+            android:gravity="center"
+            android:text="短信"
+            />
+
+        <TextView
+            android:id="@+id/tv_jx_client"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/m3"
+            android:drawableTop="@drawable/img_bottom_message"
+            android:gravity="center"
+            android:text="警信"
+            />
+
+        <TextView
+            android:id="@+id/tv_transform"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/m3"
+            android:drawableTop="@drawable/img_bottom_change"
+            android:gravity="center"
+            android:text="转换"
+            />
+    </LinearLayout>
+</LinearLayout>
+

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#55f6f6f6"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/use_popupwindow"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_use_reality_people_demand"
+                style="@style/use_popupwindow_text"
+                android:text="保存图片" />
+
+            <View style="@style/horizontal_divider_e3" />
+
+            <TextView
+                android:id="@+id/tv_use_stay_people_demand"
+                style="@style/use_popupwindow_text"
+                android:text="分享至警信" />
+
+            <View style="@style/horizontal_divider_e3" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/use_popupwindow"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                style="@style/use_popupwindow_text"
+                android:layout_marginBottom="@dimen/m20"
+                android:text="取消" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

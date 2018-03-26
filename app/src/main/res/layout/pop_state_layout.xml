@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_line_regular"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="在线时长等级规则"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <ImageView
+                android:id="@+id/iv_arrow"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/arrow_1"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_line_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/lightyellow"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:text="在线时长每10小时，等级增加一级"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:drawableRight="@drawable/icon_star"
+                android:text="初始登录为1级，显示"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_moon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:drawableRight="@drawable/icon_moon"
+                android:text="3个星星升级后变成一个月亮"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:drawableRight="@drawable/icon_sun"
+                android:text="3个月亮升级后变成一个太阳"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_crown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/m7"
+                android:layout_marginLeft="20sp"
+                android:drawableRight="@drawable/icon_crown"
+                android:text="3个太阳升级后变成一个皇冠"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/athens_gray"/>
+
+        <LinearLayout
+            android:id="@+id/ll_task_regular"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="任务完成等级规则"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <ImageView
+                android:id="@+id/iv_arrow1"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/arrow_1"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/lightyellow"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_bronze"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:text="初始为青铜勋章"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_bronze1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:text="完成50任务，获得勋章为"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_bronze2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:text="完成100任务，获得勋章为"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_bronze3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:text="完成200任务，获得勋章为"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_bronze4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:text="完成300任务，获得勋章为"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_bronze5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/m7"
+                android:layout_marginLeft="20sp"
+                android:text="完成500任务，获得勋章为"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/athens_gray"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_problem_tactics"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="常见问题及解决方法"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <ImageView
+                android:id="@+id/iv_arrow3"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/arrow_1"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tv_problem_tactics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/lightyellow"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_problem1"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/m20"
+                android:gravity="center_vertical"
+                android:text="@string/string_problem1"
+                android:textSize="12dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/athens_gray"/>
+
+            <TextView
+                android:id="@+id/tv_problem2"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/m20"
+                android:gravity="center_vertical"
+                android:text="@string/string_problem2"
+                android:textSize="12dp"/>
+
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/athens_gray"/>
+
+            <TextView
+                android:id="@+id/tv_problem3"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/m20"
+                android:gravity="center_vertical"
+                android:text="@string/string_problem3"
+                android:textSize="12dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/athens_gray"/>
+            <TextView
+                android:id="@+id/tv_problem4"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/m20"
+                android:gravity="center_vertical"
+                android:text="@string/string_problem4"
+                android:textSize="12dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/athens_gray"/>
+            <TextView
+                android:id="@+id/tv_problem5"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="@dimen/m20"
+                android:gravity="center_vertical"
+                android:text="@string/string_problem5"
+                android:textSize="12dp"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/athens_gray"/>
+
+        <LinearLayout
+            android:id="@+id/ll_help"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="版本"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <ImageView
+                android:id="@+id/iv_arrow2"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/arrow_1"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/m7"
+            android:layout_marginLeft="20sp"
+            android:text="当前版本号：1.0.0"
+            android:background="@color/lightyellow"
+            android:textSize="12sp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/athens_gray"/>
+    </LinearLayout>
+</ScrollView>

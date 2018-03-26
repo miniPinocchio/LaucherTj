@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.anrongtec.laucher.ui.activity.SplashActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/logo_new"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/tv_login_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/t16"
+        android:layout_marginLeft="@dimen/t16"
+        android:layout_marginBottom="@dimen/t20"
+        />
+
+    <TextView
+        android:id="@+id/tv_handle_mdm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="手动跳转mdm激活"/>
+
+    <TextView
+        android:id="@+id/tv_handle_sos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="手动跳统一认证"/>
+
+
+
+</RelativeLayout>

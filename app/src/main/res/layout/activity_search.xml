@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+              tools:context="com.anrongtec.laucher.ui.activity.SearchActivity">
+
+
+    <include layout="@layout/layout_title"/>
+
+    <EditText
+        android:id="@+id/tv_main_search"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/shape_bg_main_search"
+        android:drawableLeft="@drawable/img_main_search"
+        android:drawablePadding="@dimen/m6"
+        android:gravity="center_vertical"
+        android:hint="限搜索身份证号，车牌号"
+        android:paddingLeft="@dimen/m10"
+        android:textColor="#C5C8C8"
+        android:textSize="@dimen/t12"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_easy_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m5"
+            android:background="@drawable/shape_bg_btn_blue"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/m5"
+            android:text="巡逻盘查"
+            android:textColor="@color/black"
+            android:textSize="@dimen/t20"
+            />
+
+        <TextView
+            android:id="@+id/tv_patrol_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/m5"
+            android:background="@drawable/shape_bg_btn_blue"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/m5"
+            android:text="天地e搜"
+            android:textColor="@color/black"
+            android:textSize="@dimen/t20"
+            />
+    </LinearLayout>
+
+</LinearLayout>
