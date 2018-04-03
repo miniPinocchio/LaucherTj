@@ -28,6 +28,7 @@ import com.anrongtec.laucher.bean.focusperson.EKongPersonInfos;
 import com.anrongtec.laucher.bean.focusperson.EKongPersons;
 import com.anrongtec.laucher.bean.message.ZYMessage;
 import com.anrongtec.laucher.bean.sos.SosBean;
+import com.anrongtec.laucher.bean.sos.SosNewBean;
 import com.anrongtec.laucher.netconfig.Constant;
 import com.anrongtec.laucher.netconfig.UserService;
 import com.anrongtec.laucher.ui.activity.ZyMessageActivity;
@@ -102,7 +103,7 @@ public class EKongFragment extends Fragment implements Callback<String>, View.On
         SosBean userInfo = UserService.getUserInfo(getActivity());
         String code = userInfo.getCode();
         String identifier = userInfo.getIdentifier();
-        filter = "sfzh=" + identifier;
+        filter = "bkmj=" + identifier;
         getData(filter, pageSize, 1);
         return view;
     }
@@ -187,12 +188,32 @@ public class EKongFragment extends Fragment implements Callback<String>, View.On
                 tableId = String.valueOf(message.getId());
                 getDetain();
                 break;
+            case R.id.ll_focus_people_deal:
+                toZhiYu(message.getSfzh());
             default:
                 break;
         }
     }
 
-
+    private void toZhiYu(String id) {
+        SosNewBean userInfo = UserService.getNewUserInfo(getActivity());
+        String userInfoName = userInfo.getName();
+        String code = userInfo.getCode();
+        Intent mIntent = new Intent();
+        mIntent.putExtra("SYSTEM_USER_ID", code);//当前登录民警的警号
+        mIntent.putExtra("SYSTEM_USER_NAME", userInfoName);//当前登录民警的姓名
+        mIntent.putExtra("YWID", "2"); //你的业务ID
+        mIntent.putExtra("SFZH", id);//(被核查人员)身份证
+        mIntent.putExtra("YWID", ""); //你的业务ID
+        mIntent.putExtra("YWLX", ""); //你的业务类型
+        mIntent.putExtra("YWKZZD1", ""); //你的业务扩展字段1
+        mIntent.putExtra("YWKZZD2", ""); //你的业务扩展字段2
+        mIntent.putExtra("YWKZZD3", ""); //你的业务扩展字段3
+        mIntent.putExtra("YWKZZD4", ""); //你的业务扩展字段4
+        mIntent.putExtra("YWKZZD5", ""); //你的业务扩展字段5
+        mIntent.setAction("com.mosty.ydjw.xlpc.person.VIEW");
+        startActivityForResult(mIntent, 10001);
+    }
     /**
      * 扣留人员
      */

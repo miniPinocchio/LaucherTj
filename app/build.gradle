@@ -8,8 +8,8 @@ android {
         applicationId "com.anrongtec.laucher"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 14
-        versionName "6.1.0"
+        versionCode 15
+        versionName "6.1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }

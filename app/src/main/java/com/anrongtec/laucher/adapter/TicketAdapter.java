@@ -1,7 +1,6 @@
 package com.anrongtec.laucher.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -14,8 +13,6 @@ import android.widget.TextView;
 
 import com.anrongtec.laucher.R;
 import com.anrongtec.laucher.bean.message.AdmComparingInfo;
-import com.anrongtec.laucher.bean.sos.SosNewBean;
-import com.anrongtec.laucher.netconfig.UserService;
 import com.anrongtec.laucher.util.BitmapUtil;
 import com.anrongtec.laucher.util.StationUtil;
 
@@ -94,12 +91,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketAdap
             holder.tv_station_start_station.setText(StationUtil.getStation(start));
             holder.tv_station_end_station.setText(StationUtil.getStation(end));
 
-            holder.ll_deal.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    toZhiYu(message.getSfzh());
-                }
-            });
+            holder.ll_deal.setOnClickListener(listener);
+            holder.ll_deal.setTag(position);
             holder.ll_attention.setOnClickListener(listener);
             holder.ll_attention.setTag(position);
 
@@ -151,21 +144,5 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketAdap
             tv_item_person_attention = (TextView) itemView.findViewById(R.id.tv_item_person_attention);
 
         }
-    }
-
-    private void toZhiYu(String id) {
-        Intent intent = new Intent();
-        SosNewBean userInfo = UserService.getNewUserInfo(context);
-        String identifier = userInfo.getIdentifier();
-        String code = userInfo.getCode();
-        //系统登录民警身份证号码
-        intent.putExtra("SYSTEM_USER_SFZH", identifier);
-        //系统登录民警警号
-        intent.putExtra("SYSTEM_USER_JH", code);
-        //被盘查人员身份证号码
-        intent.putExtra("BPCRY_SFZH", id);
-        // com.mosty.ydjw.xlpc.person.xhw.VIEW；//agniwill（新虹伟）手机地址
-        intent.setAction("com.mosty.ydjw.xlpc.person.VIEW");
-        context.startActivity(intent);
     }
 }
