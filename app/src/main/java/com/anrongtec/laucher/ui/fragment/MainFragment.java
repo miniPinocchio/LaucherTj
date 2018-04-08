@@ -73,6 +73,7 @@ import com.anrongtec.laucher.ui.activity.ManagerSysAppsActivity;
 import com.anrongtec.laucher.ui.activity.MapCenterActivity;
 import com.anrongtec.laucher.ui.activity.MessageActivity;
 import com.anrongtec.laucher.ui.activity.SearchActivity;
+import com.anrongtec.laucher.ui.activity.SignInActivity;
 import com.anrongtec.laucher.ui.activity.TeamActivity;
 import com.anrongtec.laucher.ui.activity.TodoActivity;
 import com.anrongtec.laucher.ui.activity.WeatherActivity;
@@ -208,6 +209,8 @@ public class MainFragment extends Fragment implements View.OnClickListener, Call
     TextView mTvMyEkongTime;
     @BindView(R.id.rl_my_ekong)
     RelativeLayout mRlMyEkong;
+    @BindView(R.id.tv_main_sign_in)
+    TextView mTvMainSignIn;
 
 
     private List<ResolveInfo> mApps;
@@ -387,6 +390,10 @@ public class MainFragment extends Fragment implements View.OnClickListener, Call
         mManager.registerReceiver(mAppStateBroadcastReceiver, filter);
     }
 
+    @OnClick(R.id.tv_main_sign_in)
+    public void onViewClicked() {
+    }
+
 
     /**
      * app卸载状态监听
@@ -540,7 +547,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Call
     }
 
     @OnClick({R.id.rl_my_task, R.id.rl_my_status, R.id.rl_my_focus, R.id.rl_my_resource, R.id.tv_main_search, R.id.tv_more_app, R.id.tv_more_system_app,
-            R.id.ll_net_limit_car, R.id.iv_main_user_photo, R.id.ll_net_weather_info, R.id.ll_status, R.id.rl_my_ekong})
+            R.id.ll_net_limit_car, R.id.iv_main_user_photo, R.id.ll_net_weather_info, R.id.ll_status, R.id.rl_my_ekong,R.id.tv_main_sign_in})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rl_my_ekong:
@@ -589,6 +596,9 @@ public class MainFragment extends Fragment implements View.OnClickListener, Call
             case R.id.ll_status:
                 mStateInfoPop = new StateInfoPop(getActivity(), this);
                 mStateInfoPop.showAsDropDown(view);
+                break;
+            case R.id.tv_main_sign_in:
+                startActivity(new Intent(getActivity(), SignInActivity.class));
                 break;
             default:
                 break;
@@ -1180,7 +1190,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Call
             e.printStackTrace();
         }
         if (packInfo != null) {
-//            text_version.setText("当前版本号：" + packInfo.versionName);
+            text_version.setText("当前版本号：" + packInfo.versionName);
         }
     }
 

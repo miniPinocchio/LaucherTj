@@ -29,6 +29,7 @@ import static com.anrongtec.laucher.util.FileUtil.getRealFilePathFromUri;
 
 /**
  * 头像上传原图裁剪容器
+ * @author huiliu
  */
 public class ClipViewLayout extends RelativeLayout {
     //裁剪原图

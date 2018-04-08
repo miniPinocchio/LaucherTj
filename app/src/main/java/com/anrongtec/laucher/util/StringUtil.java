@@ -13,6 +13,7 @@ import java.security.MessageDigest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern;
 
 /**
@@ -24,6 +25,7 @@ import java.util.regex.Pattern;
 public class StringUtil {
     public static final String TAG = StringUtil.class.getSimpleName();
     private static Pattern NUMBER_PATTERN = Pattern.compile("^(\\d{6})(19|20)(\\d{2})(1[0-2]|0[1-9])(0[1-9]|[1-2][0-9]|3[0-1])(\\d{3})(\\d|X|x)?$");
+    private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
 
     /**
      * 判断字符串是否为空
@@ -275,6 +277,27 @@ public class StringUtil {
             return false;
         } else {
             return carnumber.matches(carNumRegex);
+        }
+    }
+
+
+    /**
+     * Generate a value suitable for use in {setId(int)}.
+     * This value will not collide with ID values generated at build time by aapt for R.id.
+     *
+     * @return a generated ID value
+     */
+    public static int generateViewId() {
+        for (; ; ) {
+            final int result = sNextGeneratedId.get();
+            // aapt-generated IDs have the high byte nonzero; clamp to the range under that.
+            int newValue = result + 1;
+            if (newValue > 0x00FFFFFF) {
+                newValue = 1;
+            }
+            if (sNextGeneratedId.compareAndSet(result, newValue)) {
+                return result;
+            }
         }
     }
 }

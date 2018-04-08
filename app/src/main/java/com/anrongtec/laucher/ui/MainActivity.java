@@ -172,7 +172,7 @@ public class MainActivity extends ToolBarActivity implements ViewPager.OnPageCha
             DevicePolicyManager mDevicePolicyManager = DevicePolicyManager.getInstance(getApplicationContext());
             if (mDevicePolicyManager != null) {
                 ContainerPolicy containerPolicy = mDevicePolicyManager.getContainerPolicy();
-                containerPolicy.switchContainer();
+                containerPolicy.switchContainer() ;
             } else {
                 CustomToast.INSTANCE.showToast(this, "当前为单系统手机");
             }

@@ -174,8 +174,12 @@
             android:label="我的关注"
             android:launchMode="singleTask">
         </activity>
-        <activity android:name=".ui.activity.VisitorActivity"
+        <activity
+            android:name=".ui.activity.VisitorActivity"
             android:label="无网络游客模式">
+        </activity>
+        <activity android:name=".ui.activity.SignInActivity"
+            android:label="打卡签到">
         </activity>
     </application>
 

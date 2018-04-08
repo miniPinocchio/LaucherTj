@@ -12,13 +12,6 @@
         android:background="@color/nav_off"
         >
 
-        <!--<ImageView-->
-        <!--android:id="@+id/iv_main_user_photo"-->
-        <!--android:layout_width="@dimen/m60"-->
-        <!--android:layout_height="@dimen/m60"-->
-        <!--android:layout_marginLeft="@dimen/m16"-->
-        <!--android:layout_marginTop="@dimen/m6"-->
-        <!--android:src="@drawable/user_photo_icon"/>-->
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_main_user_photo"
             android:layout_width="@dimen/m60"
@@ -69,8 +62,6 @@
             android:layout_toRightOf="@id/tv_main_user_id"
             android:src="@drawable/honor1"/>
 
-
-
         <LinearLayout
             android:id="@+id/ll_status"
             android:layout_width="wrap_content"
@@ -101,6 +92,17 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/t16"/>
 
+            <TextView
+                android:id="@+id/tv_main_sign_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/m20"
+                android:text="签到"
+                android:padding="@dimen/m3"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size16"
+                android:background="@drawable/shape_bg_square_white"
+                android:visibility="gone"/>
         </LinearLayout>
 
         <LinearLayout
@@ -178,7 +180,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
 
             <TextView
                 android:id="@+id/tv_main_search"
@@ -367,6 +368,7 @@
                             android:textSize="@dimen/t11"
                             />
                     </RelativeLayout>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="1px"
@@ -445,8 +447,7 @@
                     <RelativeLayout
                         android:id="@+id/rl_my_resource"
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        >
+                        android:layout_height="56dp">
 
                         <ImageView
                             android:id="@+id/iv_my_resource"
