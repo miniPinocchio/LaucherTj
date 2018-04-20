@@ -1,27 +1,33 @@
 package com.anrongtec.laucher.ui.fragment;
 
+import android.annotation.SuppressLint;
+
 import java.util.HashMap;
 
 /**
- * Created by huiliu on 2017/10/22.
+ *
+ * @author huiliu
+ * @date 2017/10/22
  *
  * @email liu594545591@126.com
  * @introduce
  */
 public class FragmentFactory {
-    private static HashMap<Integer, BaseFragment> mBaseFragments = new HashMap<Integer, BaseFragment>();
+    @SuppressLint("UseSparseArrays")
+    private static HashMap<Integer, BaseFragment> mBaseFragments = new HashMap<>();
 
     public static BaseFragment createFragment(int pos) {
         BaseFragment baseFragment = mBaseFragments.get(pos);
-
         if (baseFragment == null) {
             switch (pos) {
-//                case 0:
-//                    baseFragment = new TopLineFragment();//头条
-//                    break;
-//                case 1:
-//                    baseFragment = new MainFragment();//要闻
-//                    break;
+                case 0:
+                    //签到
+                    baseFragment = new SignFragment();
+                    break;
+                case 1:
+                    //统计
+                    baseFragment = new SignStatisticsFragment();
+                    break;
 //                case 2:
 //                    baseFragment = new EntertainmentFragment();//娱乐
 //                    break;

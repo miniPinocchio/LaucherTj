@@ -242,9 +242,40 @@ public class StringUtil {
      * @param s
      * @return
      */
-    public static String stampToDate(String s) {
+    public static String stampToTime(String s) {
         String res;
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        long lt = new Long(s);
+        Date date = new Date(lt);
+        res = simpleDateFormat.format(date);
+        return res;
+    }
+
+
+    /**
+     * 将时间戳转换为年月日
+     *
+     * @param s
+     * @return
+     */
+    public static String stampToDate(String s) {
+        String res;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        long lt = new Long(s);
+        Date date = new Date(lt);
+        res = simpleDateFormat.format(date);
+        return res;
+    }
+
+    /**
+     * 将时间戳转换为xx年 xx月 xx日
+     *
+     * @param s
+     * @return
+     */
+    public static String stampToDateLetter(String s) {
+        String res;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH时mm分ss秒");
         long lt = new Long(s);
         Date date = new Date(lt);
         res = simpleDateFormat.format(date);

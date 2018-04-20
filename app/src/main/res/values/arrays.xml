@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tab_short_title">
+        <item>签到</item>
+        <item>统计</item>
+    </string-array>
+</resources>

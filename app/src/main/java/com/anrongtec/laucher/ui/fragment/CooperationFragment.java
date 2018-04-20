@@ -199,8 +199,7 @@ public class CooperationFragment extends Fragment implements Callback<String>, V
         mIntent.putExtra("SYSTEM_USER_ID", code);//当前登录民警的警号
         mIntent.putExtra("SYSTEM_USER_NAME", userInfoName);//当前登录民警的姓名
         mIntent.putExtra("SFZH", id);//(被核查人员)身份证
-        mIntent.putExtra("YWID", ""); //你的业务ID
-        mIntent.putExtra("YWLX", ""); //你的业务类型
+        mIntent.putExtra("YWID", "2"); //你的业务ID
         mIntent.putExtra("YWKZZD1", ""); //你的业务扩展字段1
         mIntent.putExtra("YWKZZD2", ""); //你的业务扩展字段2
         mIntent.putExtra("YWKZZD3", ""); //你的业务扩展字段3

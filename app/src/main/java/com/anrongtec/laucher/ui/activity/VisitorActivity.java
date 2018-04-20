@@ -1,6 +1,7 @@
 package com.anrongtec.laucher.ui.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.GridLayoutManager;
@@ -25,6 +26,7 @@ import butterknife.ButterKnife;
  */
 public class VisitorActivity extends ToolBarActivity implements View.OnClickListener {
 
+    private final String CONTECTS = "com.android.contacts";
     @BindView(R.id.rv_main_tab_visitor_app)
     RecyclerView mRvMainTabVisitorApp;
     private List<Integer> mPostions;
@@ -32,7 +34,7 @@ public class VisitorActivity extends ToolBarActivity implements View.OnClickList
 
     private VisitorAdapter mAppsAdapter;
     private List<AppModel> mAppsFromLiteOrm;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +52,7 @@ public class VisitorActivity extends ToolBarActivity implements View.OnClickList
         mSystemModels = ApkUtil.getAppsFromSystems(this);
         for (int i = 0; i < mSystemModels.size(); i++) {
             for (int j = 0; j < mAppsFromLiteOrm.size(); j++) {
-                if (mSystemModels.get(i).getAppPackName().equals(mAppsFromLiteOrm.get(j).getAppPackName())){
+                if (mSystemModels.get(i).getAppPackName().equals(mAppsFromLiteOrm.get(j).getAppPackName())) {
                     mSystemModels.get(i).setCheck(true);
                     mPostions.add(i);
                 }
@@ -71,7 +73,7 @@ public class VisitorActivity extends ToolBarActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_setting_right:
-                LiteOrmDBUtil.deleteWhere(AppModel.class,"isSystem",new Object[]{true});
+                LiteOrmDBUtil.deleteWhere(AppModel.class, "isSystem", new Object[]{true});
                 for (int i = 0; i < mPostions.size(); i++) {
                     LiteOrmDBUtil.insert(mSystemModels.get(mPostions.get(i)));
                 }
@@ -83,7 +85,12 @@ public class VisitorActivity extends ToolBarActivity implements View.OnClickList
                 break;
             case R.id.rl_main_tab_app:
                 Integer position = (Integer) v.getTag();
-                ApkUtil.openAPP(this,mSystemModels.get(position).getAppPackName());
+                if (CONTECTS.equals(mSystemModels.get(position).getAppPackName())) {
+                    intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"));
+                    startActivity(intent);
+                } else {
+                    ApkUtil.openAPP(this, mSystemModels.get(position).getAppPackName());
+                }
             default:
                 break;
         }

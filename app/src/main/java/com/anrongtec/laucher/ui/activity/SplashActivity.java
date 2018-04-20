@@ -287,7 +287,6 @@ public class SplashActivity extends BaseActivity implements Callback<String> {
                         mTvLoginTips.setText(tipsText);
                         String billStrs = cursor.getString(billStr);
                         if (billStrs != null) {
-//                            TjApp.getRetrofit().getUserInfo("strToken=" + billStrs).enqueue(this);
                             if (mDialog == null||!mDialog.isShowing()) {
                                 mDialog = DialogUtil.loadingDialog(SplashActivity.this, "正在打开桌面,请稍后");
                             }

@@ -390,11 +390,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, Call
         mManager.registerReceiver(mAppStateBroadcastReceiver, filter);
     }
 
-    @OnClick(R.id.tv_main_sign_in)
-    public void onViewClicked() {
-    }
-
-
     /**
      * app卸载状态监听
      */
@@ -986,7 +981,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Call
                     mTvMyTask.setVisibility(View.VISIBLE);
                     mTvMyTask.setText(String.valueOf(queryAll.size()));
                     mTvToDoContent.setText(queryAll.get(0).getTitle());
-                    mTvMyTaskTime.setText(StringUtil.stampToDate(queryAll.get(0).getTime()));
+                    mTvMyTaskTime.setText(StringUtil.stampToTime(queryAll.get(0).getTime()));
                 }
             }
         }

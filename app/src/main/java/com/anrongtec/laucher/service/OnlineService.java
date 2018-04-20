@@ -273,7 +273,7 @@ public class OnlineService extends Service {
     public void notifyFocusUser(int id, String title, String content, TodoMessage msg) {
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification.Builder builder = new Notification.Builder(getApplicationContext());
-        builder.setContentInfo(com.anrongtec.laucher.util.StringUtil.stampToDate(msg.getTime()));
+        builder.setContentInfo(com.anrongtec.laucher.util.StringUtil.stampToTime(msg.getTime()));
         builder.setContentText(content);
         builder.setContentTitle(title);
         builder.setSmallIcon(R.mipmap.icon_laucher);
@@ -291,7 +291,7 @@ public class OnlineService extends Service {
     public void notifyEkongUser(int id, String title, String content, TodoMessage msg) {
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification.Builder builder = new Notification.Builder(getApplicationContext());
-        builder.setContentInfo(com.anrongtec.laucher.util.StringUtil.stampToDate(msg.getTime()));
+        builder.setContentInfo(com.anrongtec.laucher.util.StringUtil.stampToTime(msg.getTime()));
         builder.setContentText(content);
         builder.setContentTitle(title);
         builder.setSmallIcon(R.mipmap.icon_laucher);
@@ -309,7 +309,7 @@ public class OnlineService extends Service {
     public void notify110User(int id, String title, String content, TodoMessage msg) {
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification.Builder builder = new Notification.Builder(getApplicationContext());
-        builder.setContentInfo(com.anrongtec.laucher.util.StringUtil.stampToDate(msg.getTime()));
+        builder.setContentInfo(com.anrongtec.laucher.util.StringUtil.stampToTime(msg.getTime()));
         builder.setContentText(content);
         builder.setContentTitle(title);
         builder.setSmallIcon(R.mipmap.icon_laucher);

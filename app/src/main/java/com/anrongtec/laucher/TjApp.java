@@ -7,6 +7,7 @@ import com.anrongtec.laucher.db.LiteOrmDBUtil;
 import com.anrongtec.laucher.netconfig.ApiServiceFactory;
 import com.anrongtec.laucher.netconfig.DataLayer;
 import com.anrongtec.laucher.netconfig.NetInterface;
+import com.anrongtec.laucher.util.CrashHandler;
 import com.anrongtec.laucher.util.LogUtil;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
@@ -45,6 +46,8 @@ public class TjApp extends Application {
         });
         initOrmLite();
 
+        CrashHandler crashHandler = CrashHandler.getInstance();
+        crashHandler.init(this);
 
 //        initFB();
 //        ImagePipelineConfig frescoConfig = ImagePipelineConfig.newBuilder(this).setDownsampleEnabled(true).build();

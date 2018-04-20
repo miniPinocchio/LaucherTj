@@ -8,8 +8,8 @@ android {
         applicationId "com.anrongtec.laucher"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 15
-        versionName "6.1.1"
+        versionCode 16
+        versionName "6.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -88,4 +88,5 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     //    compile files('libs/zsdk_7max.jar')
     compile files('libs/zsdk.jar')
+    compile files('libs/pksdk.jar')
 }

@@ -57,7 +57,7 @@ public class EKongAdapter extends RecyclerView.Adapter<EKongAdapter.EKongAdapter
                 holder.ivPhoto.setImageResource(R.drawable.user_photo_icon);
             }
             String xxwb = message.getXxwb();
-            holder.tv_come_time.setText(StringUtil.stampToDate(String.valueOf(message.getCreate_time())));
+            holder.tv_come_time.setText(StringUtil.stampToTime(String.valueOf(message.getCreate_time())));
             holder.tv_name.setText(message.getXm());
             holder.tv_id.setText("身份证:" + message.getSfzh());
             String xzdxz = TextUtils.isEmpty(message.getCxdd()) ? "" : message.getCxdd();

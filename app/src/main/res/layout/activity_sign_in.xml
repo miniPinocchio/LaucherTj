@@ -2,28 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:background="@color/anti_flash_white"
               android:orientation="vertical">
 
     <include layout="@layout/layout_title"/>
 
-    <LinearLayout
+    <com.anrongtec.laucher.widget.NoScrollViewPager
+        android:id="@+id/viewpager_sign_in"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </com.anrongtec.laucher.widget.NoScrollViewPager>
 
-        <com.anrongtec.laucher.widget.UnderLineBtn
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="统计"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/black"/>
 
-        <com.anrongtec.laucher.widget.UnderLineBtn
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="我的"/>
-    </LinearLayout>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="@color/picture_selector_cor14"
+        app:tabIndicatorHeight="2dp"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/picture_selector_cor14">
+    </android.support.design.widget.TabLayout>
+
+
 
 
 </LinearLayout>

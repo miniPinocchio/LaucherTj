@@ -46,6 +46,9 @@ public class VisitorAdapter extends RecyclerView.Adapter<VisitorAdapter.VisitorH
         holder.cb_manager_apps.setVisibility(View.GONE);
         holder.rl_main_tab_app.setOnClickListener(mListener);
         holder.rl_main_tab_app.setTag(position);
+        if ("com.android.contacts".equals(appModel.getAppPackName())){
+            holder.tv_tab_app.setText("电话");
+        }
     }
 
     @Override

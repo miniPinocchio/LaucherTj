@@ -161,7 +161,7 @@ public class ZyMessageActivity extends ToolBarActivity implements Callback<Strin
             mTvCardStationTime.setText(msg.getJpsj());
             mTvCardCompareState.setText(msg.getRksj());
             long createTime = msg.getCreate_time();
-            mTvCardReceiveTime.setText(String.valueOf(StringUtil.stampToDate(String.valueOf(createTime))));
+            mTvCardReceiveTime.setText(String.valueOf(StringUtil.stampToTime(String.valueOf(createTime))));
 
             mTvStationNumber.setText(jpk);
             mTvStationTrain.setText(cz);
@@ -224,7 +224,7 @@ public class ZyMessageActivity extends ToolBarActivity implements Callback<Strin
             mTvCardStationTime.setText(msg.getBuytime());
             mTvCardCompareState.setText(msg.getRksj());
             long createTime = msg.getCreate_time();
-            mTvCardReceiveTime.setText(String.valueOf(StringUtil.stampToDate(String.valueOf(createTime))));
+            mTvCardReceiveTime.setText(String.valueOf(StringUtil.stampToTime(String.valueOf(createTime))));
 
             mTvStationNumber.setText(jpk);
             mTvStationTrain.setText(lccc);
@@ -267,7 +267,7 @@ public class ZyMessageActivity extends ToolBarActivity implements Callback<Strin
         mTvCardStationTime.setText(year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + seconds);
         mTvCardCompareState.setText(myear + "-" + mmonth + "-" + mday + " " + mhour + ":" + mminute + ":" + mseconds);
         long createTime = personInfos.getCreate_time();
-        mTvCardReceiveTime.setText(String.valueOf(StringUtil.stampToDate(String.valueOf(createTime))));
+        mTvCardReceiveTime.setText(String.valueOf(StringUtil.stampToTime(String.valueOf(createTime))));
 
 //        mTvCardOriginal.setText(personInfos.getsd());
 //        mTvCardReason.setText(msg.getSqxx());
@@ -311,7 +311,7 @@ public class ZyMessageActivity extends ToolBarActivity implements Callback<Strin
         LogUtil.d(mCooper.toString());
         mTvCardStationTime.setText(djrq);
 //        mTvCardStationTime.setText(year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + seconds);
-        String pushTime = String.valueOf(StringUtil.stampToDate(String.valueOf(mCooper.getCreateTime())));
+        String pushTime = String.valueOf(StringUtil.stampToTime(String.valueOf(mCooper.getCreateTime())));
         mTvCardCompareState.setText(pushTime);
         mTvCardReceiveTime.setText(pushTime);
 
@@ -396,19 +396,21 @@ public class ZyMessageActivity extends ToolBarActivity implements Callback<Strin
     }
 
     private void toZhiYu(String id) {
-        Intent intent = new Intent();
         SosNewBean userInfo = UserService.getNewUserInfo(this);
-        String identifier = userInfo.getIdentifier();
+        String userInfoName = userInfo.getName();
         String code = userInfo.getCode();
-        //系统登录民警身份证号码
-        intent.putExtra("SYSTEM_USER_SFZH", identifier);
-        //系统登录民警警号
-        intent.putExtra("SYSTEM_USER_JH", code);
-        //被盘查人员身份证号码
-        intent.putExtra("BPCRY_SFZH", id);
-        // com.mosty.ydjw.xlpc.person.xhw.VIEW；//agniwill（新虹伟）手机地址
-        intent.setAction("com.mosty.ydjw.xlpc.person.VIEW");
-        startActivity(intent);
+        Intent mIntent = new Intent();
+        mIntent.putExtra("SYSTEM_USER_ID", code);//当前登录民警的警号
+        mIntent.putExtra("SYSTEM_USER_NAME", userInfoName);//当前登录民警的姓名
+        mIntent.putExtra("SFZH", id);//(被核查人员)身份证
+        mIntent.putExtra("YWID", "2"); //你的业务ID
+        mIntent.putExtra("YWKZZD1", ""); //你的业务扩展字段1
+        mIntent.putExtra("YWKZZD2", ""); //你的业务扩展字段2
+        mIntent.putExtra("YWKZZD3", ""); //你的业务扩展字段3
+        mIntent.putExtra("YWKZZD4", ""); //你的业务扩展字段4
+        mIntent.putExtra("YWKZZD5", ""); //你的业务扩展字段5
+        mIntent.setAction("com.mosty.ydjw.xlpc.person.VIEW");
+        startActivityForResult(mIntent, 10001);
     }
 
     @Override

@@ -45,7 +45,7 @@ public class CollectAdapter extends RecyclerView.Adapter<CollectAdapter.CollectV
 //        holder.iv_favorite_img.setImageResource();
         holder.tv_favorite_title.setText(rows.getTitle());
         holder.tv_favorite_content.setText(rows.getContent());
-        String stampTime = StringUtil.stampToDate(String.valueOf(rows.getWatch_time()));
+        String stampTime = StringUtil.stampToTime(String.valueOf(rows.getWatch_time()));
         holder.tv_favorite_time.setText(stampTime);
         holder.ll_favorite_item.setOnClickListener(listener);
         holder.ll_favorite_item.setTag(position);

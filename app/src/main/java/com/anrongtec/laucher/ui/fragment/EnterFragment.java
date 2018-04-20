@@ -316,11 +316,8 @@ public class EnterFragment extends Fragment implements BGARefreshLayout.BGARefre
                     mLoadMoreAdapter.loadAllDataCompleted();
                     return;
                 }
-
-
                 mLoadMoreAdapter.loadCompleted();
                 mRefreshLayout.endRefreshing();
-
             }
         }
     }

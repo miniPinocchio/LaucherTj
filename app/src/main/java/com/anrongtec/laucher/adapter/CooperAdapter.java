@@ -57,7 +57,7 @@ public class CooperAdapter extends RecyclerView.Adapter<CooperAdapter.CooperAdap
                 holder.ivPhoto.setImageResource(R.drawable.user_photo_icon);
             }
             String rylx = message.getRylx();
-            holder.tv_come_time.setText(StringUtil.stampToDate(String.valueOf(message.getCreateTime())));
+            holder.tv_come_time.setText(StringUtil.stampToTime(String.valueOf(message.getCreateTime())));
             holder.tv_name.setText(message.getXm());
             holder.tv_id.setText("身份证:" + message.getSfzh());
             /**
