@@ -146,8 +146,9 @@ public interface NetInterface {
     @FormUrlEncoded
     @POST("/dcojp-api/ajax/selectTicketInfo.do")
     Call<String> getMessageTicketInfos(@Field("filters") String filters,
-                                 @Field("pageSize") int pageSize,
-                                 @Field("page") int page);
+                                       @Field("pageSize") int pageSize,
+                                       @Field("page") int page);
+
     /**
      * 获取E控重点人消息
      *
@@ -159,8 +160,9 @@ public interface NetInterface {
     @FormUrlEncoded
     @POST("/dcojp-api/ajax/selectTdekInfo.do")
     Call<String> getEKongInfos(@Field("filters") String filters,
-                                       @Field("pageSize") int pageSize,
-                                       @Field("page") int page);
+                               @Field("pageSize") int pageSize,
+                               @Field("page") int page);
+
     /**
      * 获取警辅核采重点人消息
      *
@@ -172,8 +174,8 @@ public interface NetInterface {
     @FormUrlEncoded
     @POST("/dcojp-api/ajax//selectHlwDbInfo.do")
     Call<String> getCooperInfos(@Field("filters") String filters,
-                                       @Field("pageSize") int pageSize,
-                                       @Field("page") int page);
+                                @Field("pageSize") int pageSize,
+                                @Field("page") int page);
 
     /**
      * 获取待办列表
@@ -348,6 +350,42 @@ public interface NetInterface {
     Call<String> getSearchFocusand(@Field("filters") String filters,
                                    @Field("pageSize") int pageSize,
                                    @Field("page") int page);
+
+    /**
+     * 签到
+     *
+     * @param code
+     * @param orgCode
+     * @param clockInTime
+     * @param clockOutTime
+     * @param type
+     * @param status
+     * @param address
+     * @param longitude
+     * @param latitudinal
+     * @param accuracy
+     * @param note
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("/dcojp-api/ajax/addUserClockRecord.do")
+    Call<String> addUserSign(@Field("code") String code,
+                             @Field("orgCode") String orgCode,
+                             @Field("clockInTime") String clockInTime,
+                             @Field("clockOutTime") String clockOutTime,
+                             @Field("type") int type,
+                             @Field("status") int status,
+                             @Field("address") String address,
+                             @Field("longitude") String longitude,
+                             @Field("latitudinal") String latitudinal,
+                             @Field("accuracy") int accuracy,
+                             @Field("note") String note);
+
+    @FormUrlEncoded
+    @POST("/dcojp-api/ajax/selectClockRecord.do")
+    Call<String> getSign(@Field("filters") String code,
+                         @Field("page") String page,
+                         @Field("pageSize") String pageSize);
 
 
 }

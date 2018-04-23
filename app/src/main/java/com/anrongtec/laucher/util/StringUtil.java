@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigDecimal;
 import java.security.MessageDigest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -251,6 +252,19 @@ public class StringUtil {
         return res;
     }
 
+    /**
+     * 将时间戳转换为时间
+     *
+     * @param s
+     * @return
+     */
+    public static String stampToTime(long s) {
+        String res;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(s);
+        res = simpleDateFormat.format(date);
+        return res;
+    }
 
     /**
      * 将时间戳转换为年月日
@@ -261,8 +275,46 @@ public class StringUtil {
     public static String stampToDate(String s) {
         String res;
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        long lt = new Long(s);
+        long lt = Long.valueOf(s);
         Date date = new Date(lt);
+        res = simpleDateFormat.format(date);
+        return res;
+    }
+
+    /**
+     * 将时间戳转换为年月日
+     *
+     * @param s
+     * @return
+     */
+    public static String stampToDate(long s) {
+        String res;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date(s);
+        res = simpleDateFormat.format(date);
+        return res;
+    }
+
+    /**
+     * 去掉数字0
+     * @param number
+     * @return
+     */
+    public static String getPrettyNumber(String number) {
+        return BigDecimal.valueOf(Double.parseDouble(number))
+                .stripTrailingZeros().toPlainString();
+    }
+
+    /**
+     * 将时间戳转换为年月日
+     *
+     * @param s
+     * @return
+     */
+    public static String stampToMonth(long s) {
+        String res;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM");
+        Date date = new Date(s);
         res = simpleDateFormat.format(date);
         return res;
     }

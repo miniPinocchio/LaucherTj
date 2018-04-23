@@ -264,7 +264,6 @@ public class EnterFragment extends Fragment implements BGARefreshLayout.BGARefre
         }
     }
 
-
     @Override
     public void onFailure(Call<String> call, Throwable t) {
         CustomToast.INSTANCE.showToast(getActivity(), "网络异常");
@@ -277,7 +276,6 @@ public class EnterFragment extends Fragment implements BGARefreshLayout.BGARefre
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.what == 998) {
-//                tv_item_person_attention.setText("已扣留");
                 mMessages.get(position).setStatus("2");
 
                 mLoadMoreAdapter.loadCompleted();

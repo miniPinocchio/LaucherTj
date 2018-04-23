@@ -18,6 +18,10 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.anrongtec.laucher.R;
 import com.anrongtec.laucher.TjApp;
+import com.anrongtec.laucher.bean.sign.SignData;
+import com.anrongtec.laucher.bean.sign.SignInfo;
+import com.anrongtec.laucher.bean.sign.SignInfoData;
+import com.anrongtec.laucher.bean.sign.SignResult;
 import com.anrongtec.laucher.bean.sos.SosNewBean;
 import com.anrongtec.laucher.bean.userinfo.WeatherData;
 import com.anrongtec.laucher.bean.userinfo.WeatherDatas;
@@ -28,6 +32,8 @@ import com.anrongtec.laucher.util.LogUtil;
 import com.anrongtec.laucher.util.StringUtil;
 import com.anrongtec.laucher.widget.CustomToast;
 import com.bumptech.glide.Glide;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,9 +84,9 @@ public class SignFragment extends BaseFragment implements Callback<String> {
             super.handleMessage(msg);
             switch (msg.what) {
                 case 99:
-                    final AMapLocation location = (AMapLocation) msg.obj;
-                    String address = location.getAddress();
-                    mTvSignLocation.setText(address == null ? "" : address);
+                    mLocation = (AMapLocation) msg.obj;
+                    mAddress = mLocation.getAddress();
+                    mTvSignLocation.setText(mAddress == null ? mResult : mAddress);
                     break;
                 case 98:
                     if (mDialog != null && mDialog.isShowing()) {
@@ -95,6 +101,10 @@ public class SignFragment extends BaseFragment implements Callback<String> {
         }
     };
     private Dialog mDialog;
+    private int mType;
+    private String mResult;
+    private String mAddress;
+    private AMapLocation mLocation;
 
 
     public SignFragment() {
@@ -114,10 +124,18 @@ public class SignFragment extends BaseFragment implements Callback<String> {
     }
 
     private void initData() {
+        mType = 1;
         mUserInfo = UserService.getNewUserInfo(getActivity());
         TjApp.getRetrofit().getServerLocalData("code=" + mUserInfo.getCode() + "&id=" + mUserInfo.getId() + "&depId="
                 + mUserInfo.getDepid() + "&depCode=" + mUserInfo.getDepcode() + "&today=" + "2018-01-24"
         ).enqueue(SignFragment.this);
+    }
+
+    private void initSign() {
+        mType = 2;
+        String dateSign = StringUtil.stampToDate(System.currentTimeMillis());
+        TjApp.getRetrofit().getSign("code=" + mUserInfo.getCode() + "&timeNyr=" +
+                dateSign, "1", "10").enqueue(SignFragment.this);
     }
 
     private void initView() {
@@ -130,12 +148,27 @@ public class SignFragment extends BaseFragment implements Callback<String> {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_user_sign_record:
-                mHandler.sendEmptyMessageDelayed(98, 2000);
                 mDialog = DialogUtil.loadingDialog(getActivity(), "正在签到...");
+                toSign();
                 break;
             default:
                 break;
         }
+    }
+
+    /**
+     * 打卡签到
+     */
+    private void toSign() {
+        mType = 3;
+        String time = StringUtil.stampToTime(System.currentTimeMillis());
+        TjApp.getRetrofit().addUserSign(mUserInfo.getCode(), mUserInfo.getDepcode(),
+                time, "", 1, 1, mAddress,
+                String.valueOf(mLocation.getLongitude()), String.valueOf(mLocation.getLatitude()),
+                (int) mLocation.getAccuracy(), "").enqueue(this);
+//        if (mResult != null) {
+//            CustomToast.INSTANCE.showToast(getActivity(),"定位失败，签到");
+//        }
     }
 
     @Override
@@ -166,18 +199,36 @@ public class SignFragment extends BaseFragment implements Callback<String> {
      */
     private void resolveData(String data) {
         if (data != null) {
-            WeatherDatas datas = GsonUtil.parseJsonWithGson(data, WeatherDatas.class);
-            if (datas != null) {
-                mDatasData = datas.getData();
-                mDepName = mDatasData.getDepName();
-                mTvSignOrgan.setText(mDepName == null ? "" : mDepName);
+            if (mType == 1) {
+                WeatherDatas datas = GsonUtil.parseJsonWithGson(data, WeatherDatas.class);
+                if (datas != null) {
+                    mDatasData = datas.getData();
+                    mDepName = mDatasData.getDepName();
+                    mTvSignOrgan.setText(mDepName == null ? "" : mDepName);
 
-                mAtt_url = mDatasData.getAtt_url();
-                if (mAtt_url != null) {
-                    Glide.with(getActivity())
-                            .load(BASE_URL + mAtt_url)
-                            .crossFade()
-                            .into(mIvSignUserPhoto);
+                    mAtt_url = mDatasData.getAtt_url();
+                    if (mAtt_url != null) {
+                        Glide.with(getActivity())
+                                .load(BASE_URL + mAtt_url)
+                                .crossFade()
+                                .into(mIvSignUserPhoto);
+                    }
+                }
+                initSign();
+            } else if (mType == 2) {
+                SignInfo signInfo = GsonUtil.parseJsonWithGson(data, SignInfo.class);
+                SignData signInfoData = signInfo.getData();
+                List<SignInfoData> rows = signInfoData.getRows();
+                if (rows != null && rows.size() > 0) {
+                    SignInfoData infoData = rows.get(rows.size() - 1);
+                    mTvSignTime.setText(StringUtil.stampToDateLetter(infoData.getClock_in_time()));
+                }
+            } else if (mType == 3) {
+                SignResult signResult = GsonUtil.parseJsonWithGson(data, SignResult.class);
+                CustomToast.INSTANCE.showToast(getActivity(), signResult.getMsg());
+                mTvSignTime.setText(StringUtil.stampToDateLetter(String.valueOf(System.currentTimeMillis())));
+                if (mDialog != null && mDialog.isShowing()) {
+                    mDialog.dismiss();
                 }
             }
         }
@@ -186,6 +237,7 @@ public class SignFragment extends BaseFragment implements Callback<String> {
     /**
      * 初始化定位
      */
+
     private void initLocation() {
         mTvSignLocation.setText("正在定位。。。");
 
@@ -257,9 +309,9 @@ public class SignFragment extends BaseFragment implements Callback<String> {
                     sb.append("错误码:" + location.getErrorCode() + "\n");
                     sb.append("错误信息:" + location.getErrorInfo() + "\n");
                     sb.append("错误描述:" + location.getLocationDetail() + "\n");
+                    //解析定位结果，
+                    mResult = sb.toString();
                 }
-                //解析定位结果，
-                String result = sb.toString();
             } else {
 //                mTvMainSearch.setText("定位失败，loc is null");
             }

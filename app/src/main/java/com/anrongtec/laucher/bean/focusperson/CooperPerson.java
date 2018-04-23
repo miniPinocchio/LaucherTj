@@ -3,7 +3,9 @@ package com.anrongtec.laucher.bean.focusperson;
 import java.util.List;
 
 /**
- * Created by huiliu on 2018/3/3.
+ *
+ * @author huiliu
+ * @date 2018/3/3
  *
  * @email liu594545591@126.com
  * @introduce

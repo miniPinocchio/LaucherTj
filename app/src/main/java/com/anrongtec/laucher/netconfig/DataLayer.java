@@ -5,6 +5,9 @@ import android.support.v4.util.SimpleArrayMap;
 
 import com.anrongtec.laucher.BuildConfig;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.internal.LinkedTreeMap;
+import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -105,9 +108,12 @@ public final class DataLayer {
             Response response = chain.proceed(request);
 
             String json = response.body().string();
-            json = json.replace("{\"relogin\":1}", "");
+            try {
+                getGson().fromJson(json, LinkedTreeMap.class);
+                Logger.json(json);
+            } catch (JsonSyntaxException e) {
 
-//            Logger.json(json);
+            }
             return response.newBuilder()
                     .body(ResponseBody.create(MediaType.parse("application/json"), json))
                     .build();
